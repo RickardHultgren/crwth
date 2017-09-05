@@ -1,0 +1,71 @@
+#:kivy 1.0.9
+<PongGame>:
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'top'
+        ScreenManager:
+            size_hint: 1, .9
+            id: _screen_manager
+            Screen:
+                name: 'screen1'
+                BoxLayout: 
+                    orientation: 'vertical'
+                    padding: '5sp'
+
+                    BoxLayout:
+                        Label:
+                            text: "G'"							
+#                            text: str(slider_id1.value)[0]
+#                            size_hint_x: None
+#                            width: '10sp'
+                            
+                        Label:
+                            text: "C''"
+#                            text: str(slider_id2.value)[0]
+#                            size_hint_x: None
+#                            width: '10sp'
+
+                        Label:
+                            text: "D''"
+#                            text: str(slider_id3.value)[0]
+#                            size_hint_x: None
+#                            width: '10sp'
+
+                    BoxLayout:
+                        size_hint_y: '3sp'
+                        height: '5sp'
+                        Slider:
+                            step: 1
+                            min:0
+                            max:12
+                            id: slider_id1
+                            on_value: root.inputlabel1 = float(args[1])
+                            orientation:'vertical'
+#                            size_hint_y: '3sp'
+#                            height: '230sp'
+#                            size_hint_x: None
+#                            width: '50sp'                
+                        Slider:
+                            step: 1
+                            min:0
+                            max:12
+                            id: slider_id2
+                            on_value: root.inputlabel2 = float(args[1])
+                            orientation:'vertical'
+#                            size_hint_y: '5sp'
+#                            height: '5sp'
+
+#                            size_hint_x: None
+#                            width: '50sp'
+                            
+
+                        Slider:
+                            step: 1
+                            min:0
+                            max:12
+#                            value:0
+                            id: slider_id3
+                            on_value: root.inputlabel3 = float(args[1])
+                            orientation:'vertical'
+                            height: 50
+
