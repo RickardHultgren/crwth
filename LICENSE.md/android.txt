@@ -1,0 +1,3 @@
+title=crwth
+author=Rickard Verner Hultgren
+orientation=portrait
