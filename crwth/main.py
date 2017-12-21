@@ -67,16 +67,19 @@ class PongGame(FloatLayout):
 #	sound.seek(self.inputlabel1)	
 	def update(self,dt):
 		if self.inputlabel1 != self.past[0]:
-			for i in range(0,12):
-				exec('self.Gvar%s.stop()'%(str(i)))
+			exec('self.Gvar%s.stop()'%(str(self.past[0])))
+			#for i in range(0,12):
+				#exec('self.Gvar%s.stop()'%(str(i)))
 			exec('self.Gvar%s.play()'%(str(int(self.inputlabel1))))
 		if self.inputlabel2 != self.past[1]:
-			for i in range(0,12):
-				exec('self.Cvar%s.stop()'%(i))
+			exec('self.Cvar%s.stop()'%(str(self.past[0])))
+			#for i in range(0,12):
+				#exec('self.Cvar%s.stop()'%(i))
 			exec('self.Cvar%s.play()'%(str(int(self.inputlabel2))))
 		if self.inputlabel3 != self.past[2]:
-			for i in range(0,12):
-				exec('self.Dvar%s.stop()'%(i))
+			exec('self.Dvar%s.stop()'%(str(self.past[0])))
+			#for i in range(0,12):
+				#exec('self.Dvar%s.stop()'%(i))
 			exec('self.Dvar%s.play()'%(str(int(self.inputlabel3))))
 		self.past[0]=int(self.inputlabel1)
 		self.past[1]=int(self.inputlabel2)
