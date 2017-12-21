@@ -10,6 +10,7 @@ from kivy.core.audio import SoundLoader
 
 class PongGame(FloatLayout):
 #	sound 'test.wav')
+	past=[0,0,0]
 	inputlabel1 = NumericProperty(0)
 	inputlabel2 = NumericProperty(0)
 	inputlabel3 = NumericProperty(0)
@@ -27,7 +28,7 @@ class PongGame(FloatLayout):
 	Gvar10 = SoundLoader.load('f2.wav')
 	Gvar11 = SoundLoader.load('fis2.wav')
 	Gvar12 = SoundLoader.load('g2.wav')
-
+	
 	Cvar0 = SoundLoader.load( 'c2.wav')
 	Cvar1 = SoundLoader.load(  'cis2.wav')
 	Cvar2 = SoundLoader.load(  'd2.wav')
@@ -55,101 +56,32 @@ class PongGame(FloatLayout):
 	Dvar10 = SoundLoader.load('c3.wav')
 	Dvar11 = SoundLoader.load('cis3.wav')
 	Dvar12 = SoundLoader.load('d3.wav')
-		
+
+	for i in range(0,12):
+		exec('Gvar%s.loop=True'%(str(i)))
+		exec('Cvar%s.loop=True'%(str(i)))
+		exec('Dvar%s.loop=True'%(str(i)))
+	Gvar0.play()
+	Cvar0.play()
+	Dvar0.play()
 #	sound.seek(self.inputlabel1)	
 	def update(self,dt):
-		soundG = ''
-		soundC = ''
-		soundD = ''
-		if self.inputlabel1 == 0:
-			self.Gvar0.play()
-		elif self.inputlabel1 == 1:
-			self.Gvar1.play()
-		elif self.inputlabel1 == 2:
-			self.Gvar2.play()
-		elif self.inputlabel1 == 3:
-			self.Gvar3.play()
-		elif self.inputlabel1 == 4:
-			self.Gvar4.play()
-		elif self.inputlabel1 == 5:
-			self.Gvar5.play()
-		elif self.inputlabel1 == 6:
-			self.Gvar6.play()
-		elif self.inputlabel1 == 7:
-			self.Gvar7.play()
-		elif self.inputlabel1 == 8:
-			self.Gvar8.play()
-		elif self.inputlabel1 == 9:
-			self.Gvar9.play()
-		elif self.inputlabel1 == 10:
-			self.Gvar10.play()
-		elif self.inputlabel1 == 11:
-			self.Gvar11.play()
-		elif self.inputlabel1 == 12:
-			self.Gvar12.play()
+		if self.inputlabel1 != self.past[0]:
+			for i in range(0,12):
+				exec('self.Gvar%s.stop()'%(str(i)))
+			exec('self.Gvar%s.play()'%(str(int(self.inputlabel1))))
+		if self.inputlabel2 != self.past[1]:
+			for i in range(0,12):
+				exec('self.Cvar%s.stop()'%(i))
+			exec('self.Cvar%s.play()'%(str(int(self.inputlabel2))))
+		if self.inputlabel3 != self.past[2]:
+			for i in range(0,12):
+				exec('self.Dvar%s.stop()'%(i))
+			exec('self.Dvar%s.play()'%(str(int(self.inputlabel3))))
+		self.past[0]=int(self.inputlabel1)
+		self.past[1]=int(self.inputlabel2)
+		self.past[2]=int(self.inputlabel3)
 
-		if self.inputlabel2 == 0:
-			self.Cvar0.play()
-		elif self.inputlabel2 == 1:
-			self.Cvar1.play()
-		elif self.inputlabel2 == 2:
-			self.Cvar2.play()
-		elif self.inputlabel2 == 3:
-			self.Cvar3.play()
-		elif self.inputlabel2 == 4:
-			self.Cvar4.play()
-		elif self.inputlabel2 == 5:
-			self.Cvar5.play()
-		elif self.inputlabel2 == 6:
-			self.Cvar6.play()
-		elif self.inputlabel2 == 7:
-			self.Cvar7.play()
-		elif self.inputlabel2 == 8:
-			self.Cvar8.play()
-		elif self.inputlabel2 == 9:
-			self.Cvar9.play()
-		elif self.inputlabel2 == 10:
-			self.Cvar10.play()
-		elif self.inputlabel2 == 11:
-			self.Cvar11.play()
-		elif self.inputlabel2 == 12:
-			self.Cvar12.play()
-
-		if self.inputlabel3 == 0:
-			self.Dvar0.play()
-		elif self.inputlabel3 == 1:
-			self.Dvar1.play()
-		elif self.inputlabel3 == 2:
-			self.Dvar2.play()
-		elif self.inputlabel3 == 3:
-			self.Dvar3.play()
-		elif self.inputlabel3 == 4:
-			self.Dvar4.play()
-		elif self.inputlabel3 == 5:
-			self.Dvar5.play()
-		elif self.inputlabel3 == 6:
-			self.Dvar6.play()
-		elif self.inputlabel3 == 7:
-			self.Dvar7.play()
-		elif self.inputlabel3 == 8:
-			self.Dvar8.play()
-		elif self.inputlabel3 == 9:
-			self.Dvar9.play()
-		elif self.inputlabel3 == 10:
-			self.Dvar10.play()
-		elif self.inputlabel3 == 11:
-			self.Dvar11.play()
-		elif self.inputlabel3 == 12:
-			self.Dvar12.play()
-	
-		#stringG = SoundLoader.load('%s' % soundG)
-		#stringG.play()
-		#stringG.stop()
-		#stringC = SoundLoader.load('%s' % soundC)
-		#stringC..play()
-		#stringD = SoundLoader.load('%s' % soundD)
-		#stringD.play()
-		
 class PongApp(App):
 	def build(self):
 		game = PongGame()
