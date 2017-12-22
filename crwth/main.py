@@ -1,3 +1,4 @@
+import os
 from random import randint
 from kivy.app import App
 from kivy.lang import Builder
@@ -57,7 +58,7 @@ class PongGame(FloatLayout):
 	Dvar11 = SoundLoader.load('cis3.wav')
 	Dvar12 = SoundLoader.load('d3.wav')
 
-	for i in range(0,12):
+	for i in range(0,13):
 		exec('Gvar%s.loop=True'%(str(i)))
 		exec('Cvar%s.loop=True'%(str(i)))
 		exec('Dvar%s.loop=True'%(str(i)))
@@ -68,18 +69,21 @@ class PongGame(FloatLayout):
 	def update(self,dt):
 		if self.inputlabel1 != self.past[0]:
 			exec('self.Gvar%s.stop()'%(str(self.past[0])))
-			#for i in range(0,12):
-				#exec('self.Gvar%s.stop()'%(str(i)))
+			#for i in range(0,13):
+			#	if int(i)!=int(self.inputlabel1):
+			#		exec('try:self.Gvar%s.stop()\nexcept:pass'%(str(i)))
 			exec('self.Gvar%s.play()'%(str(int(self.inputlabel1))))
 		if self.inputlabel2 != self.past[1]:
 			exec('self.Cvar%s.stop()'%(str(self.past[0])))
-			#for i in range(0,12):
-				#exec('self.Cvar%s.stop()'%(i))
+			#for i in range(0,13):
+			#	if int(i)!=int(self.inputlabel2):
+			#		exec('try:self.Cvar%s.stop()\nexcept:pass;'%(i))
 			exec('self.Cvar%s.play()'%(str(int(self.inputlabel2))))
 		if self.inputlabel3 != self.past[2]:
 			exec('self.Dvar%s.stop()'%(str(self.past[0])))
-			#for i in range(0,12):
-				#exec('self.Dvar%s.stop()'%(i))
+			#for i in range(0,13):
+			#	if int(i)!=int(self.inputlabel3):
+			#		exec('try:self.Dvar%s.stop()\nexcept:pass;'%(i))
 			exec('self.Dvar%s.play()'%(str(int(self.inputlabel3))))
 		self.past[0]=int(self.inputlabel1)
 		self.past[1]=int(self.inputlabel2)
@@ -88,7 +92,7 @@ class PongGame(FloatLayout):
 class PongApp(App):
 	def build(self):
 		game = PongGame()
-		Clock.schedule_interval(game.update, 0.1)
+		Clock.schedule_interval(game.update, 0.5)
 		return game
 
 if __name__ == '__main__':
