@@ -29,6 +29,8 @@ class PongGame(FloatLayout):
 	Gvar10 = SoundLoader.load('f2.wav')
 	Gvar11 = SoundLoader.load('fis2.wav')
 	Gvar12 = SoundLoader.load('g2.wav')
+	#Gvar12 = Gvar0
+	#Gvar12.pitch=2	
 	
 	Cvar0 = SoundLoader.load( 'c2.wav')
 	Cvar1 = SoundLoader.load(  'cis2.wav')
