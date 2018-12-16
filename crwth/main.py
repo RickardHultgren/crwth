@@ -76,13 +76,13 @@ class PongGame(FloatLayout):
 			#		exec('try:self.Gvar%s.stop()\nexcept:pass'%(str(i)))
 			exec('self.Gvar%s.play()'%(str(int(self.inputlabel1))))
 		if self.inputlabel2 != self.past[1]:
-			exec('self.Cvar%s.stop()'%(str(self.past[0])))
+			exec('self.Cvar%s.stop()'%(str(self.past[1])))
 			#for i in range(0,13):
 			#	if int(i)!=int(self.inputlabel2):
 			#		exec('try:self.Cvar%s.stop()\nexcept:pass;'%(i))
 			exec('self.Cvar%s.play()'%(str(int(self.inputlabel2))))
 		if self.inputlabel3 != self.past[2]:
-			exec('self.Dvar%s.stop()'%(str(self.past[0])))
+			exec('self.Dvar%s.stop()'%(str(self.past[2])))
 			#for i in range(0,13):
 			#	if int(i)!=int(self.inputlabel3):
 			#		exec('try:self.Dvar%s.stop()\nexcept:pass;'%(i))
@@ -94,7 +94,7 @@ class PongGame(FloatLayout):
 class PongApp(App):
 	def build(self):
 		game = PongGame()
-		Clock.schedule_interval(game.update, 0.5)
+		Clock.schedule_interval(game.update, 0.2)
 		return game
 
 if __name__ == '__main__':
