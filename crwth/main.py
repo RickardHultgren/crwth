@@ -91,6 +91,18 @@ class PongGame(FloatLayout):
 		self.past[1]=int(self.inputlabel2)
 		self.past[2]=int(self.inputlabel3)
 
+	def on_pause(self):
+			return True
+
+	def on_resume(self):
+			pass
+		
+			
+
+	def on_stop(self):
+		pass
+
+
 class PongApp(App):
 	def build(self):
 		game = PongGame()
