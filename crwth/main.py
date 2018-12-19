@@ -32,19 +32,20 @@ class PongGame(FloatLayout):
 	#Gvar12 = Gvar0
 	#Gvar12.pitch=2	
 	
-	Cvar0 = SoundLoader.load( 'c2.wav')
-	Cvar1 = SoundLoader.load(  'cis2.wav')
-	Cvar2 = SoundLoader.load(  'd2.wav')
-	Cvar3 = SoundLoader.load(  'dis2.wav')
-	Cvar4 = SoundLoader.load(  'e2.wav')
-	Cvar5 = SoundLoader.load(  'f2.wav')
-	Cvar6 = SoundLoader.load(  'fis2.wav')
-	Cvar7 = SoundLoader.load(  'g2.wav')
-	Cvar8 = SoundLoader.load(  'gis2.wav')
-	Cvar9 = SoundLoader.load(  'a2.wav')
-	Cvar10 = SoundLoader.load(  'ais2.wav')
-	Cvar11 = SoundLoader.load(  'b2.wav')
-	Cvar12 = SoundLoader.load(  'c3.wav')
+	#var0 = SoundLoader.load( 'c2.wav')
+	
+	#Cvar1 = SoundLoader.load(  'cis2.wav')
+	#Cvar2 = SoundLoader.load(  'd2.wav')
+	#Cvar3 = SoundLoader.load(  'dis2.wav')
+	#Cvar4 = SoundLoader.load(  'e2.wav')
+	#Cvar5 = SoundLoader.load(  'f2.wav')
+	#Cvar6 = SoundLoader.load(  'fis2.wav')
+	#Cvar7 = SoundLoader.load(  'g2.wav')
+	#Cvar8 = SoundLoader.load(  'gis2.wav')
+	#Cvar9 = SoundLoader.load(  'a2.wav')
+	#Cvar10 = SoundLoader.load(  'ais2.wav')
+	#Cvar11 = SoundLoader.load(  'b2.wav')
+	#Cvar12 = SoundLoader.load(  'c3.wav')
 
 	Dvar0 = SoundLoader.load('d2.wav')
 	Dvar1 = SoundLoader.load('dis2.wav')
@@ -62,10 +63,10 @@ class PongGame(FloatLayout):
 
 	for i in range(0,13):
 		exec('Gvar%s.loop=True'%(str(i)))
-		exec('Cvar%s.loop=True'%(str(i)))
+		#exec('Cvar%s.loop=True'%(str(i)))
 		exec('Dvar%s.loop=True'%(str(i)))
 	Gvar0.play()
-	Cvar0.play()
+	#Cvar0.play()
 	Dvar0.play()
 #	sound.seek(self.inputlabel1)	
 	def update(self,dt):
@@ -75,12 +76,12 @@ class PongGame(FloatLayout):
 			#	if int(i)!=int(self.inputlabel1):
 			#		exec('try:self.Gvar%s.stop()\nexcept:pass'%(str(i)))
 			exec('self.Gvar%s.play()'%(str(int(self.inputlabel1))))
-		if self.inputlabel2 != self.past[1]:
-			exec('self.Cvar%s.stop()'%(str(self.past[1])))
+		#if self.inputlabel2 != self.past[1]:
+			#exec('self.Cvar%s.stop()'%(str(self.past[1])))
 			#for i in range(0,13):
 			#	if int(i)!=int(self.inputlabel2):
 			#		exec('try:self.Cvar%s.stop()\nexcept:pass;'%(i))
-			exec('self.Cvar%s.play()'%(str(int(self.inputlabel2))))
+			#exec('self.Cvar%s.play()'%(str(int(self.inputlabel2))))
 		if self.inputlabel3 != self.past[2]:
 			exec('self.Dvar%s.stop()'%(str(self.past[2])))
 			#for i in range(0,13):
@@ -88,7 +89,8 @@ class PongGame(FloatLayout):
 			#		exec('try:self.Dvar%s.stop()\nexcept:pass;'%(i))
 			exec('self.Dvar%s.play()'%(str(int(self.inputlabel3))))
 		self.past[0]=int(self.inputlabel1)
-		self.past[1]=int(self.inputlabel2)
+		
+		#self.past[1]=int(self.inputlabel2)
 		self.past[2]=int(self.inputlabel3)
 
 	def on_pause(self):
